@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -87,6 +87,7 @@
 	const GraphingRadar = __webpack_require__(423);
 
 	const GoogleSheet = function (sheetId, sheetName) {
+	  console.log(sheetId);
 	  var self = {};
 
 	  self.build = function () {
@@ -100,10 +101,11 @@
 	      if (!sheetName) {
 	        sheetName = Object.keys(sheets)[0];
 	      }
-
+	      console.log(sheetName);
 	      var blips = _.map(tabletop.sheets(sheetName).all(), new InputSanitizer().sanitize);
 
 	      document.title = tabletop.googleSheetName;
+	      console.log(document.title);
 	      d3.selectAll(".loading").remove();
 
 	      var cycles = _.map(_.uniqBy(blips, 'cycle'), 'cycle');
@@ -125,7 +127,8 @@
 	        radar.addQuadrant(quadrant);
 	      });
 
-	      var size = window.innerHeight - 133 < 620 ? 620 : window.innerHeight - 133;
+	      //var size = (window.innerHeight - 133) < 620 ? 620 : window.innerHeight - 133;
+	      var size = 900;
 	      new GraphingRadar(size, radar).init().plot();
 	    }
 	  };
@@ -89547,7 +89550,7 @@
 	    d3.selectAll('.quadrant-table').classed('selected', false);
 	    d3.selectAll('.quadrant-table.' + order).classed('selected', true);
 
-	    var scale = 2;
+	    var scale = 1.7;
 
 	    var adjustX = Math.sin(toRadian(startAngle)) - Math.cos(toRadian(startAngle));
 	    var adjustY = Math.cos(toRadian(startAngle)) + Math.sin(toRadian(startAngle));
