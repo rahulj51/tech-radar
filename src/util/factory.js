@@ -15,6 +15,7 @@ const Blip = require('../models/blip');
 const GraphingRadar = require('../graphing/radar');
 
 const GoogleSheet = function (sheetId, sheetName) {
+  console.log(sheetId);
   var self = {};
 
   self.build = function () {
@@ -28,10 +29,11 @@ const GoogleSheet = function (sheetId, sheetName) {
       if(!sheetName) {
         sheetName = Object.keys(sheets)[0];
       }
-
+      console.log(sheetName);
       var blips = _.map(tabletop.sheets(sheetName).all(), new InputSanitizer().sanitize);
 
       document.title = tabletop.googleSheetName;
+      console.log(document.title);
       d3.selectAll(".loading").remove();
 
       var cycles = _.map(_.uniqBy(blips, 'cycle'), 'cycle');
@@ -53,7 +55,8 @@ const GoogleSheet = function (sheetId, sheetName) {
         radar.addQuadrant(quadrant)
       });
 
-      var size = (window.innerHeight - 133) < 620 ? 620 : window.innerHeight - 133;
+      //var size = (window.innerHeight - 133) < 620 ? 620 : window.innerHeight - 133;
+      var size = 900;
       new GraphingRadar(size, radar).init().plot();
     }
   };
