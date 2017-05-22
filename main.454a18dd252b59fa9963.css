@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700);
-.d3-tip {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700);.d3-tip {
   white-space: nowrap;
   line-height: 1;
   font-size: 12px;
@@ -264,3 +263,5 @@ div.quadrant-table {
         div.quadrant-table ul li .blip-item-description.expanded {
           transition: max-height 0.5s ease 0.2s;
           max-height: 400px; }
+
+/*# sourceMappingURL=main.454a18dd252b59fa9963.css.map*/
